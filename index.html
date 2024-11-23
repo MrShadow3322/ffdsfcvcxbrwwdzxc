@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Marketplace</title>
+  <style>
+    /* Основные стили */
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #1a1d2e;
+      color: #ffffff;
+    }
+
+    .header {
+      background-color: #23263a;
+      padding: 10px;
+      text-align: center;
+      font-size: 24px;
+    }
+
+    .nav {
+      display: flex;
+      justify-content: center;
+      padding: 10px;
+      background-color: #2e3140;
+      position: sticky;
+      top: 0;
+      z-index: 999;
+    }
+
+    .nav button {
+      background-color: #40568a;
+      color: #ffffff;
+      border: none;
+      padding: 10px 20px;
+      margin: 0 10px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s, transform 0.3s;
+    }
+
+    .nav button:hover {
+      background-color: #5567a6;
+      transform: scale(1.1);
+    }
+
+    .nav button.active {
+      background-color: #2c3e70;
+    }
+
+    .categories, .all-products {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      padding: 20px;
+    }
+
+    .item {
+      background-color: #2e3140;
+      border: 1px solid #40568a;
+      border-radius: 10px;
+      width: 200px;
+      text-align: center;
+      padding: 20px;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .item:hover {
+      transform: scale(1.05);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">Marketplace</div>
+  <div class="nav">
+    <button id="categoriesBtn" class="active">Категории</button>
+    <button id="allProductsBtn">Все товары</button>
+  </div>
+
+  <!-- Секция категорий -->
+  <div id="categoriesSection" class="categories">
+    <div class="item">Для дома</div>
+    <div class="item">Техника</div>
+    <div class="item">Одежда</div>
+  </div>
+
+  <!-- Секция всех товаров -->
+  <div id="allProductsSection" class="all-products hidden">
+    <div class="item">Товар 1</div>
+    <div class="item">Товар 2</div>
+    <div class="item">Товар 3</div>
+    <div class="item">Товар 4</div>
+    <div class="item">Товар 5</div>
+  </div>
+
+  <script>
+    // Получение кнопок и секций
+    const categoriesBtn = document.getElementById("categoriesBtn");
+    const allProductsBtn = document.getElementById("allProductsBtn");
+    const categoriesSection = document.getElementById("categoriesSection");
+    const allProductsSection = document.getElementById("allProductsSection");
+
+    // Обработчик нажатий
+    categoriesBtn.addEventListener("click", () => {
+      categoriesBtn.classList.add("active");
+      allProductsBtn.classList.remove("active");
+      categoriesSection.classList.remove("hidden");
+      allProductsSection.classList.add("hidden");
+    });
+
+    allProductsBtn.addEventListener("click", () => {
+      allProductsBtn.classList.add("active");
+      categoriesBtn.classList.remove("active");
+      allProductsSection.classList.remove("hidden");
+      categoriesSection.classList.add("hidden");
+    });
+  </script>
+</body>
+</html>
